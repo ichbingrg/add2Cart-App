@@ -3,6 +3,7 @@ html,body{
     padding:0;
     font-family: 'Rubik', sans-serif;
     background-color: #eef0f4;
+    user-select: none;
 }
 
 
@@ -42,6 +43,12 @@ button{
     font-family: 'Rubik', sans-serif;
 }
 
+button:hover{
+    background-color: #432000;
+    cursor: pointer;
+}
+
+
 ul{
     list-style-type: none;
     padding: 0;
@@ -60,8 +67,14 @@ ul li{
     text-align: center;
     border-radius: 8px;
     flex-grow : 1;
+    user-select: none;
 
     
+}
+
+ul li:hover{
+    background-color: #ffecc7;
+    cursor: pointer;
 }
 
 img{
