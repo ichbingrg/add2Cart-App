@@ -28,7 +28,7 @@ const appendItemToShoppingListEl=(item)=>{
 
     newEl.textContent=itemValue
 
-    newEl.addEventListener("dblclick",()=>{
+    newEl.addEventListener("click",()=>{
         console.log(itemID)
         const exactLocationInDB = ref(database, `items/${itemID}`)
         remove(exactLocationInDB)
@@ -53,13 +53,30 @@ addButtonEl.addEventListener("click", ()=>{
     console.log(`${inputValue} added to list`)
 })
 
+inputFieldEl.addEventListener('keydown',(e)=>{
+    if(e.key === "Enter"){
+        let inputValue = inputFieldEl.value
+
+    if (inputValue === ""){
+        return
+    }
+
+    push(shoppingListInDB ,inputValue)
+
+    //appendItemToShoppingListEl(inputValue)
+    //console.log(shoppingListEl.innerHTML)
+    clearInputFieldEl()
+    console.log(`${inputValue} added to list`)
+    }
+})
+
 //onValue fetches the data from the db as snapshot
 onValue(shoppingListInDB, (snapshot) =>{
     
     clearShoppingListEl()
     
     if(!snapshot.exists()){
-        shoppingListEl.innerHTML = "Not items here... yet"
+        shoppingListEl.innerHTML = `<a style="color:#432000"> Not items here... yet </a>`
         return
     }
     
